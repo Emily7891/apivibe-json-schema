@@ -1,0 +1,157 @@
+{
+    "$schema": "https://json-schema.org/draft/2020-12/schema",
+    "type": "object",
+    "properties": {
+      "brand": { "type": "string" },
+      "link": { "type": "string", "format": "uri" },
+      "about": { "type": "string" },
+      "data": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": { "type": "integer" },
+            "model": { "type": "string" },
+            "releaseYear": { "type": "integer" },
+            "releaseDate": { "type": "string" },
+            "os": { "type": "string" },
+            "osVersion": { "type": "string" },
+            "softwareUpdates": {
+              "type": "object",
+              "properties": {
+                "major": { "type": "string" },
+                "security": { "type": "string" }
+              },
+              "required": ["major", "security"]
+            },
+            "segment": { "type": "string" },
+            "colors": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "video": { "type": ["string", "null"] },
+            "images": {
+              "type": "array",
+              "items": { "type": "string", "format": "uri" }
+            },
+            "inTheBox": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "specs": {
+              "type": "object",
+              "properties": {
+                "display": {
+                  "type": "object",
+                  "properties": {
+                    "size": { "type": "string" },
+                    "type": { "type": "string" },
+                    "refreshRate": { "type": "string" }
+                  },
+                  "required": ["size", "type", "refreshRate"]
+                },
+                "dimensions": {
+                  "type": "object",
+                  "properties": {
+                    "height": { "type": "string" },
+                    "width": { "type": "string" },
+                    "thickness": { "type": "string" },
+                    "weight": { "type": "string" }
+                  },
+                  "required": ["height", "width", "thickness", "weight"]
+                },
+                "processor": { "type": "string" },
+                "battery": {
+                  "type": "object",
+                  "properties": {
+                    "capacity": { "type": "string" },
+                    "charging": { "type": "string" }
+                  },
+                  "required": ["capacity", "charging"]
+                },
+                "camera": {
+                  "type": "array",
+                  "items": { "type": "string" }
+                },
+                "flash": { "type": "string" },
+                "eSIM": { "type": ["string", "null"] },
+                "durability": {
+                  "type": "array",
+                  "items": { "type": "string" }
+                },
+                "connectivity": {
+                  "type": "object",
+                  "properties": {
+                    "5G": { "type": "boolean" },
+                    "WiFi": { "type": "string" },
+                    "Bluetooth": { "type": "string" },
+                    "NFC": { "type": "boolean" }
+                  },
+                  "required": ["5G", "WiFi", "Bluetooth", "NFC"]
+                },
+                "ports": {
+                  "type": "array",
+                  "items": { "type": "string" }
+                },
+                "sensors": {
+                  "type": "array",
+                  "items": { "type": "string" }
+                },
+                "band": {
+                  "type": "object",
+                  "properties": {
+                    "2G": { "type": "string" },
+                    "3G": { "type": "string" },
+                    "4G": { "type": "string" },
+                    "5G": { "type": "string" }
+                  },
+                  "required": ["2G", "3G", "4G", "5G"]
+                }
+              },
+              "required": ["display", "dimensions", "processor", "battery", "camera", "flash", "durability", "connectivity", "ports", "sensors", "band"]
+            },
+            "features": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "ram": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "storage": {
+              "type": "array",
+              "items": { "type": "string" }
+            },
+            "price": {
+              "oneOf": [
+                { "type": "string" },
+                {
+                  "type": "object",
+                  "properties": {
+                    "INR": { "type": "string" }
+                  },
+                  "required": ["INR"]
+                }
+              ]
+            },
+            "variants": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "ram": { "type": "integer" },
+                  "storage": { "type": "string" },
+                  "price": { "type": "string" },
+                  "INR": { "type": "string" }
+                },
+                "required": ["ram", "storage"]
+              }
+            }
+          },
+          "required": ["id", "model", "releaseYear", "releaseDate", "os", "osVersion", "softwareUpdates", "segment", "colors", "images", "inTheBox", "specs", "features", "ram", "storage", "price", "variants"]
+        }
+      }
+    },
+    "required": ["brand", "link", "about", "data"]
+  }
+  
